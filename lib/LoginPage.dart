@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:odoo_api/odoo_api.dart';
+import 'package:odoo/HomePage.dart';
 
 var client = new OdooClient("http://35.240.181.0:8069");
 
@@ -90,7 +91,10 @@ class _LoginPageState extends State<LoginPage> {
                           if(auth.isSuccess) {
                             final user = auth.getUser();
                             print("Hello ${user.name}");
-                            Navigator.pop(context);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => HomePage()),
+                            );
                           } else {
                             print("Login Gagal");
                           }
